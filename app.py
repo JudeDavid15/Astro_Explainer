@@ -44,6 +44,7 @@ demo = gr.Interface(
 
 # Register /ask FIRST, then mount Gradio at "/" so /ask takes precedence.
 app = gr.mount_gradio_app(api, demo, path="/",
+                          ssr_mode=False,
                           theme=gr.Theme.load("crimson.json"))
 if __name__ == "__main__":
     import uvicorn
