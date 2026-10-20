@@ -1,17 +1,4 @@
----
-title: Astro Event Explainer
-emoji: 🪐
-colorFrom: indigo
-colorTo: purple
-sdk: gradio
-sdk_version: 6.26.0
-python_version: "3.13"
-app_file: app.py
-pinned: false
----
-
-
-# 🪐 Astro Event Explainer
+#  Astro Event Explainer
 
 An agentic astronomy Q&A app. A LangGraph router decides whether each question should be answered from a RAG index over an astronomy textbook, from a live NASA API call, or with a clarifying question.
 
@@ -109,21 +96,6 @@ curl -X POST http://127.0.0.1:7860/ask \
   "answer": "Stars appear to twinkle because..."
 }
 ```
-
-## Deployment
-
-**Hugging Face Spaces (Gradio SDK)**
-
-1. Create a Space with the Gradio SDK and the free CPU hardware.
-2. In **Settings → Variables and secrets**, add `GROQ_API_KEY` and `NASA_API_KEY`.
-3. Push this repo to the Space. The header at the top of this README is the Space configuration. Add `sdk_version` there if you need to pin the Gradio version.
-4. `chroma_db/` includes a file over 10 MB, which Hugging Face requires Git LFS for: run `git lfs track "chroma_db/**"` before committing.
-
-The app listens on port 7860, which is what Spaces expects.
-
-**Render (alternative)**
-
-Build command `pip install -r requirements.txt`, start command `uvicorn app:app --host 0.0.0.0 --port $PORT`, and the two environment variables above. Note that the free instance has 512 MB of RAM, which may be too little for PyTorch-based embeddings, and it sleeps after 15 minutes of inactivity, so the first request after idle takes about a minute.
 
 ## Known limitations
 
