@@ -7,6 +7,16 @@ from fastapi import FastAPI
 
 from src.graph import app as agent_app
 
+# Added Spaces for hosting
+try:
+    import spaces
+
+    @spaces.GPU
+    def _zerogpu_placeholder():
+        return None
+except ImportError:  
+    pass
+
 api = FastAPI(title="Astro Event Explainer")
 
 
